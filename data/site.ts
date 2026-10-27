@@ -1,12 +1,31 @@
 export const site = {
   name: 'Arthur Nunes',
   role: 'Sites para negócios que querem ser levados a sério.',
-  whatsapp: '5511999999999',
-  instagram: 'https://instagram.com/arthurnunes',
-  instagramLabel: '@arthurnunes',
-  email: 'ola@arthurnunes.com.br',
+  whatsapp: '5531991856364',
+  instagram: 'https://www.instagram.com/nuness.dev/',
+  instagramLabel: '@nuness.dev',
+  email: 'arthurnunesdev1@gmail.com',
   city: 'Atendimento remoto · Brasil',
-  whatsappMessage: 'Olá Arthur, vi seu portfólio e gostaria de conversar sobre um site para meu negócio.',
+  whatsappMessage: `Olá, Arthur! 👋
+
+Tenho interesse em melhorar a imagem do meu negócio e gostaria de solicitar um orçamento para um site profissional.
+
+*👤 Meu nome:*
+[Seu nome]
+
+*🏢 Meu negócio:*
+[Nome ou segmento]
+
+*💻 O que preciso:*
+[Landing page / Site institucional / Loja virtual / Ainda não sei]
+
+*🎯 Objetivo do site:*
+[Ex.: atrair clientes, apresentar serviços, receber pedidos]
+
+*📅 Quando pretendo começar:*
+[Agora / Próximas semanas / Sem pressa]
+
+Aguardo seu retorno!`,
 }
 
 export const services = [
