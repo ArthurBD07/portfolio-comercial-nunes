@@ -1,17 +1,23 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { seo, structuredData } from '../data/seo'
 
 export const metadata: Metadata = {
-  title: 'Arthur Nunes — Sites para pequenos negócios',
-  description: 'Sites e landing pages profissionais para autônomos, microempresas e pequenos negócios.',
-  generator: 'v0.app',
+  metadataBase: new URL(seo.url),
+  title: seo.title,
+  description: seo.description,
+  alternates: { canonical: seo.url },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: 'Arthur Nunes — Sites para pequenos negócios',
-    description: 'Uma presença digital clara, bonita e feita para o seu negócio.',
+    title: seo.title,
+    description: seo.description,
+    url: seo.url,
+    siteName: 'Arthur Nunes — Desenvolvimento Web',
     type: 'website',
     locale: 'pt_BR',
   },
+  twitter: { card: 'summary', title: seo.title, description: seo.description },
   icons: { icon: '/logoCerta.png', apple: '/apple-icon.png' },
 }
 
@@ -23,5 +29,5 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR"><body className="antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
+  return <html lang="pt-BR"><body className="antialiased"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
 }
