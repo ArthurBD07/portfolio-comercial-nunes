@@ -5,6 +5,7 @@ import { seo, structuredData } from '../data/seo'
 
 export const metadata: Metadata = {
   metadataBase: new URL(seo.url),
+  verification: { google: 'eAJYlK2VYtGDoiH2Tw6qoj5WmvIYnv610FrtmjeIgyM' },
   title: seo.title,
   description: seo.description,
   alternates: { canonical: seo.url },
