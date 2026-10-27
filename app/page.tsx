@@ -6,13 +6,14 @@ import { ArrowUpRight, Check, ChevronDown, Mail, Menu, MoveUpRight, Sparkles, X 
 import { faqs, process, services, site, whatsappUrl } from '@/data/site'
 import ProjectsCarousel from '@/components/ui/projects-carousel'
 import HeroTitleAnimated from '@/components/hero-title'
+import heroStyles from './hero.module.css'
 
 function ArrowLink({ href, children, light = false }: { href: string; children: React.ReactNode; light?: boolean }) {
   return <a href={href} className={`group inline-flex items-center gap-2 text-sm font-semibold transition-colors ${light ? 'text-[#f8f5ef] hover:text-[#d7c6a5]' : 'text-[#252522] hover:text-[#c66b4c]'}`}><span>{children}</span><ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
 }
 
 function HeroTitle() {
-  return <HeroTitleAnimated className="max-w-3xl font-serif text-[clamp(2.5rem,8vw,7.3rem)] leading-[.91] tracking-[-0.065em]" highlightClassName="italic text-[#c66b4c]" />
+  return <HeroTitleAnimated className={`${heroStyles.title} max-w-3xl font-serif text-[clamp(2.5rem,8vw,7.3rem)] leading-[.91] tracking-[-0.065em]`} highlightClassName="italic text-[#c66b4c]" />
 }
 
 export default function Page() {
@@ -66,7 +67,7 @@ export default function Page() {
         {menuOpen && <nav className="flex flex-col gap-5 border-t border-[#252522]/10 bg-[#f8f5ef] px-5 py-6 md:hidden" aria-label="Menu mobile">{['Projetos', 'Serviços', 'Processo', 'Sobre'].map((item) => <a onClick={() => setMenuOpen(false)} key={item} href={`#${item.toLowerCase()}`} className="text-lg">{item}</a>)}<a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-1 rounded-full bg-[#252522] px-5 py-3 text-center text-sm font-semibold text-[#f8f5ef]">Pedir orçamento</a></nav>}
       </header>
 
-      <section id="inicio" className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-10 pt-28 md:grid-cols-[1.08fr_.92fr] md:gap-12 md:px-10 md:pb-28 md:pt-44">
+      <section id="inicio" className={`${heroStyles.hero} relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-10 pt-28 md:grid-cols-[1.08fr_.92fr] md:gap-12 md:px-10 md:pb-28 md:pt-44`}>
         <div className="relative z-10" data-reveal>
           <p className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#c66b4c]"><span className="h-px w-8 bg-[#c66b4c]" /> Desenvolvimento web independente</p>
           <HeroTitle />
