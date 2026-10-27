@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
   },
-  icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
+  icons: { icon: '/logoCerta.png', apple: '/apple-icon.png' },
 }
 
 export const viewport: Viewport = {

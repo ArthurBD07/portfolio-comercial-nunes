@@ -1,16 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, Check, ChevronDown, Instagram, Mail, Menu, MoveUpRight, Sparkles, X } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowUpRight, Check, ChevronDown, Mail, Menu, MoveUpRight, Sparkles, X } from 'lucide-react'
 import { faqs, process, services, site, whatsappUrl } from '@/data/site'
-import { projects } from '@/data/projects'
+import ProjectsCarousel from '@/components/ui/projects-carousel'
 import HeroTitleAnimated from '@/components/hero-title'
-
-const placeholderProjects = [
-  { label: 'Hamburgueria · projeto conceito', title: 'Um site com personalidade para apresentar o cardápio e despertar a vontade de pedir.', color: 'bg-[#e9d8c2]', accent: 'bg-[#c66b4c]' },
-  { label: 'Nutrição · projeto conceito', title: 'Um site acolhedor para apresentar o acompanhamento nutricional e facilitar o agendamento de consultas.', color: 'bg-[#d8e3dd]', accent: 'bg-[#6f9481]' },
-  { label: 'Personal trainer · site publicado', title: 'Um site profissional para apresentar seus serviços e facilitar o contato com novos alunos.', color: 'bg-[#dedbea]', accent: 'bg-[#766c9b]', url: 'https://montanha-personal.vercel.app' },
-]
 
 function ArrowLink({ href, children, light = false }: { href: string; children: React.ReactNode; light?: boolean }) {
   return <a href={href} className={`group inline-flex items-center gap-2 text-sm font-semibold transition-colors ${light ? 'text-[#f8f5ef] hover:text-[#d7c6a5]' : 'text-[#252522] hover:text-[#c66b4c]'}`}><span>{children}</span><ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
@@ -22,7 +17,6 @@ function HeroTitle() {
 
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const activeProjects = projects.length > 0
 
   useEffect(() => {
     const revealItems = document.querySelectorAll<HTMLElement>('[data-reveal]')
@@ -50,7 +44,19 @@ export default function Page() {
     <main className="min-h-screen overflow-hidden bg-[#f8f5ef] text-[#252522] selection:bg-[#d7c6a5] selection:text-[#252522]">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-[#252522]/10 bg-[#f8f5ef]/90 backdrop-blur-md">
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 md:px-10">
-          <a href="#inicio" className="font-serif text-xl tracking-[-0.04em]">Arthur<span className="text-[#c66b4c]">.</span></a>
+          <a href="#inicio" aria-label="Arthur Nunes — início" className="block shrink-0">
+            <span className="relative block h-[48px] w-[200px] md:w-[190px] lg:w-[250px]">
+              <Image
+                src="/LogoArthurNunes.png"
+                alt="Arthur Nunes — sites que impulsionam negócios"
+                width={1774}
+                height={887}
+                loading="eager"
+                className="absolute left-1/2 top-1/2 max-w-none"
+                style={{ width: '128.46%', height: 'auto', transform: 'translate(-50%, -50.8%)' }}
+              />
+            </span>
+          </a>
           <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
             {['Projetos', 'Serviços', 'Processo', 'Sobre'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-medium tracking-wide text-[#252522]/65 transition-colors hover:text-[#252522]">{item}</a>)}
             <a href={whatsappUrl} target="_blank" rel="noreferrer" className="rounded-full bg-[#252522] px-4 py-2.5 text-xs font-semibold text-[#f8f5ef] transition-transform hover:-translate-y-0.5">Vamos conversar <ArrowUpRight className="ml-1 inline size-3" /></a>
@@ -79,10 +85,7 @@ export default function Page() {
 
       <div className="marquee border-y border-[#252522]/10 bg-[#e7e1d6]" aria-label="Princípios do trabalho"><div className="marquee-track"><div className="marquee-group"><span className="text-[#252522]">Sites com intenção</span><span>Conteúdo claro</span><span>Experiência responsiva</span><span>Contato facilitado</span></div><div className="marquee-group" aria-hidden="true"><span className="text-[#252522]">Sites com intenção</span><span>Conteúdo claro</span><span>Experiência responsiva</span><span>Contato facilitado</span></div></div></div>
 
-      <section id="projetos" className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-36"><div className="mb-14 flex flex-col justify-between gap-5 md:flex-row md:items-end" data-reveal><div><p className="section-kicker">01 / trabalhos</p><h2 className="section-title">Espaços para <em>bons negócios.</em></h2></div><p className="max-w-xs text-sm leading-relaxed text-[#252522]/60">Uma seleção de projetos reais e conceitos desenvolvidos para apresentar bons negócios com clareza e personalidade.</p></div>{activeProjects ? <div className="grid gap-8 md:grid-cols-2">{projects.map((project) => <article key={project.name}>{project.image && <img src={project.image} alt={project.name} className="aspect-[4/3] w-full object-cover" />}<p className="mt-4 text-xs uppercase tracking-wider text-[#c66b4c]">{project.segment}</p><h3 className="mt-2 font-serif text-3xl">{project.name}</h3></article>)}</div> : <div className="grid gap-5 md:grid-cols-3" data-reveal-group>{placeholderProjects.map((item, index) => {
-  const card = <article key={item.label} data-reveal className={`group relative min-h-[330px] overflow-hidden p-6 ${item.color} ${index === 1 ? 'md:translate-y-12' : ''}`}><div className={`absolute -right-10 -top-10 size-48 rounded-full ${item.accent} opacity-90 transition-transform duration-700 group-hover:scale-125`} /><div className="relative flex h-full flex-col justify-between"><span className="text-xs font-semibold uppercase tracking-[.16em] text-[#252522]/60">{item.label}</span><div><span className="mb-4 block font-serif text-6xl leading-none text-[#252522]/20">0{index + 1}</span><h3 className="max-w-[250px] font-serif text-3xl leading-tight tracking-[-.04em]">{item.title}</h3><p className="mt-5 text-xs uppercase tracking-wider text-[#252522]/50">{item.url ? 'Visitar site ↗' : 'Espaço reservado para um projeto'}</p></div></div></article>
-  return item.url ? <a key={item.label} href={item.url} target="_blank" rel="noreferrer" aria-label={`Visitar projeto ${item.label}`} className="block transition-transform hover:-translate-y-2">{card}</a> : card
-})}</div>}</section>
+      <ProjectsCarousel />
 
       <section id="serviços" className="bg-[#252522] px-5 py-24 text-[#f8f5ef] md:px-10 md:py-36"><div className="mx-auto max-w-7xl"><div className="grid gap-14 md:grid-cols-[.8fr_1.2fr]"><div><p className="section-kicker text-[#d7c6a5]">02 / o que eu faço</p><h2 className="section-title text-[#f8f5ef]">O essencial, <em className="text-[#d7c6a5]">bem feito.</em></h2><p className="mt-7 max-w-sm text-sm leading-relaxed text-[#f8f5ef]/60">Nada de soluções prontas que não conversam com o seu negócio. Cada página nasce de uma conversa e de uma necessidade real.</p></div><div className="divide-y divide-[#f8f5ef]/15" data-reveal-group>{services.map((service) => <div key={service.number} data-reveal className="grid gap-3 py-7 md:grid-cols-[60px_1fr_1fr] md:items-start"><span className="text-xs text-[#d7c6a5]">{service.number}</span><h3 className="font-serif text-3xl">{service.title}</h3><p className="max-w-xs text-sm leading-relaxed text-[#f8f5ef]/55">{service.text}</p></div>)}</div></div></div></section>
 
