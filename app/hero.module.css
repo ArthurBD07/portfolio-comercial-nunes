@@ -1,7 +1,6 @@
 @media (max-width: 767px) {
   .hero {
-    min-height: 100svh;
-    align-content: center;
+    align-content: start;
     padding-top: 112px;
     padding-bottom: 56px;
   }
