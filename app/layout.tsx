@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: seo.title,
     description: seo.description,
     url: seo.url,
-    siteName: 'Arthur Nunes — Desenvolvimento Web',
+    siteName: seo.name,
     type: 'website',
     locale: 'pt_BR',
   },

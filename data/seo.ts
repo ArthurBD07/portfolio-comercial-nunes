@@ -2,8 +2,9 @@ import { site } from './site'
 
 export const seo = {
   url: 'https://nunessdev.vercel.app/',
-  title: 'Criação de sites e landing pages | Arthur Nunes',
-  description: 'Criação de sites e landing pages para profissionais e pequenos negócios. Design responsivo, apresentação clara e contato pelo WhatsApp. Solicite um orçamento.',
+  name: 'NunesDev',
+  title: 'NunesDev | Arthur Nunes — Criação de sites',
+  description: 'NunesDev: criação de sites e landing pages por Arthur Nunes para profissionais e pequenos negócios. Design responsivo e contato pelo WhatsApp. Peça um orçamento.',
 }
 
 export const structuredData = {
@@ -23,7 +24,8 @@ export const structuredData = {
       '@type': 'WebSite',
       '@id': seo.url + '#website',
       url: seo.url,
-      name: 'Arthur Nunes — Desenvolvimento Web',
+      name: seo.name,
+      alternateName: 'Arthur Nunes — Desenvolvimento Web',
       inLanguage: 'pt-BR',
       publisher: { '@id': seo.url + '#arthur' },
     },
